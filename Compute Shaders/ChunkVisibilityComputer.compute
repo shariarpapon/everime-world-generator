@@ -1,0 +1,73 @@
+#pragma kernel CheckViewerSurrounding
+#pragma kernel CheckPreviouslyActiveChunks
+
+struct ChunkUpdateData
+{
+    float2 coord;
+    int setActive;
+};
+
+RWStructuredBuffer<ChunkUpdateData> dataBuffer;
+
+float maxViewDistance;
+
+float chunkSize;
+float chunkExtent;
+
+float3 viewerPosition;
+int2 viewerChunkCoords;
+
+int chunksVisibleRadially;
+int visibleChunksPerAxis;
+
+float BoundDistToViewer(float3 min, float3 max, float3 viewer)
+{
+    float3 pointOnBounds = clamp(viewer, min, max);
+    return distance(pointOnBounds, viewer);
+};
+
+[numthreads(16,16,1)]
+void CheckViewerSurrounding(uint3 id : SV_DispatchThreadID)
+{
+    int ccx = viewerChunkCoords.x + (id.x - chunksVisibleRadially);
+    int ccy = viewerChunkCoords.y + (id.y - chunksVisibleRadially);
+
+    int index = id.y * visibleChunksPerAxis + id.x;
+
+    ChunkUpdateData dataInstance = dataBuffer[index];
+
+    float2 center = float2(ccx * chunkSize + chunkExtent, ccy * chunkSize + chunkExtent);
+    float3 min = float3(center.x - chunkExtent, 0, center.y - chunkExtent);
+    float3 max = float3(center.x + chunkExtent, 0, center.y + chunkExtent);
+
+    float dist = BoundDistToViewer(min, max, viewerPosition);
+
+    dataInstance.coord = float2(ccx, ccy);
+
+    if(dist <= maxViewDistance) dataInstance.setActive = 1;
+    else dataInstance.setActive = 0;
+
+    dataBuffer[index] = dataInstance;
+}
+
+[numthreads(16, 16, 1)]
+void CheckPreviouslyActiveChunks(uint3 id : SV_DispatchThreadID)
+{
+    int index = id.y * visibleChunksPerAxis + id.x;
+    ChunkUpdateData dataInstance = dataBuffer[index];
+    int ccx = dataInstance.coord.x;
+    int ccy = dataInstance.coord.y;
+
+    float2 center = float2(ccx * chunkSize + chunkExtent, ccy * chunkSize + chunkExtent);
+    float3 min = float3(center.x - chunkExtent, 0, center.y - chunkExtent);
+    float3 max = float3(center.x + chunkExtent, 0, center.y + chunkExtent);
+
+    float dist = BoundDistToViewer(min, max, viewerPosition);
+
+    dataInstance.coord = float2(ccx, ccy);
+
+    if (dist <= maxViewDistance) dataInstance.setActive = 1;
+    else dataInstance.setActive = 0;
+
+    dataBuffer[index] = dataInstance;
+}
