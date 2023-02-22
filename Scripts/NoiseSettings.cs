@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace XEntity.WorldGeneration
+namespace Everime.WorldGeneration
 {
     /// <summary>
     /// This class contains settings for nosie map generation.

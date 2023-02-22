@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace XEntity.WorldGeneration
+namespace Everime.WorldGeneration
 {
     /// <summary>
     /// This class handles chunk visibility updates.

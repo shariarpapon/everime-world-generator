@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace XEntity.WorldGeneration
+namespace Everime.WorldGeneration
 {
     /// <summary>
     /// The world class generates the world map and holds all data of the particular world.

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-namespace XEntity.WorldGeneration
+namespace Everime.WorldGeneration
 {
     /// <summary>
     /// This class is used for creating a world either on edit-mode or play-mode.

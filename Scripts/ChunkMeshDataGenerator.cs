@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace XEntity.WorldGeneration
+namespace Everime.WorldGeneration
 {
     /// <summary>
     /// This class contains methods for chunk mesh data generation.

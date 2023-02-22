@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace XEntity.WorldGeneration
+namespace Everime.WorldGeneration
 {
     /// <summary>
     /// This class contains all the data of a chunk.

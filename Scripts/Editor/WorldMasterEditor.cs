@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace XEntity.WorldGeneration.CustomEditors
+namespace Everime.WorldGeneration.CustomEditors
 {
     [CustomEditor(typeof(WorldMaster))]
     public class WorldMasterEditor : Editor

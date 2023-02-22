@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace XEntity.WorldGeneration
+namespace Everime.WorldGeneration
 {
     public class ChunkData
     {

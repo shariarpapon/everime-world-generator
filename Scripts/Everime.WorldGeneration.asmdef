@@ -1,5 +1,5 @@
 {
-    "name": "XEntity.WorldGeneration",
+    "name": "Everime.WorldGeneration",
     "rootNamespace": "",
     "references": [
         "GUID:59a16361dc294bd4d97cd17bfa965758"
