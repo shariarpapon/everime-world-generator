@@ -1,4 +1,4 @@
-#pragma kernel CheckViewerSurrounding
+#pragma kernel CheckSurroundingChunks
 #pragma kernel CheckPreviouslyActiveChunks
 
 struct ChunkUpdateData
@@ -26,8 +26,9 @@ float BoundDistToViewer(float3 min, float3 max, float3 viewer)
     return distance(pointOnBounds, viewer);
 };
 
+//Kernel 0
 [numthreads(16,16,1)]
-void CheckViewerSurrounding(uint3 id : SV_DispatchThreadID)
+void CheckSurroundingChunks(uint3 id : SV_DispatchThreadID)
 {
     int ccx = viewerChunkCoords.x + (id.x - chunksVisibleRadially);
     int ccy = viewerChunkCoords.y + (id.y - chunksVisibleRadially);
@@ -50,6 +51,7 @@ void CheckViewerSurrounding(uint3 id : SV_DispatchThreadID)
     dataBuffer[index] = dataInstance;
 }
 
+//Kernel 1
 [numthreads(16, 16, 1)]
 void CheckPreviouslyActiveChunks(uint3 id : SV_DispatchThreadID)
 {
