@@ -16,7 +16,7 @@
 <li><p>Click &quot;Create World&quot; to generate a world with the already assigned world settings.</p>
 </li>
 </ol>
-<h4>Knwon Issues:</h4>
+<h4>Known Issues:</h4>
 
 <ol>
 <li><p>The vertex normals for the terrain mesh do not allign smoothly between chunk edges. For curvy terrains the lighting seams maybe visible on the edges of the chunks.</p>
