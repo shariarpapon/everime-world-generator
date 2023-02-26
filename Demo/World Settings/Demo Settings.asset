@@ -15,7 +15,7 @@ MonoBehaviour:
   globalSettings:
     useRandomSeed: 0
     seed: test seed
-    worldSizeInChunks: 30
+    worldSizeInChunks: 2
     chunkSize: 16
     chunkMaterial: {fileID: 2100000, guid: 3081c196948955d42bdcc6672b69ff0d, type: 2}
     vertexGradient:
@@ -82,11 +82,11 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    heightMultiplier: 50
+    heightMultiplier: 2
     heightCalculationMethod: 3
     uniformRadialFalloff: 0
   terrainNoiseSettings:
-    scale: 200
+    scale: 25
     octaves: 4
     lacunarity: 2
     persistence: 0.3
